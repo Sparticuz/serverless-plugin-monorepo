@@ -8,7 +8,10 @@
     "osls",
     "monorepo",
     "workspace",
-    "workspaces"
+    "workspaces",
+    "pnpm",
+    "yarn",
+    "npm"
   ],
   "author": "Kyle McNally",
   "homepage": "https://github.com/sparticuz/serverless-plugin-monorepo",
