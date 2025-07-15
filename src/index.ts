@@ -100,7 +100,15 @@ export default class ServerlessMonoRepo {
       path.join(toPath, path.dirname(name)),
       path.dirname(pkg),
     );
-    if ((pkg.match(/node_modules/g) ?? []).length <= 1 && !created.has(name)) {
+    
+    // Handle different package manager structures
+    const isPnpmPackage = pkg.includes("/.pnpm/");
+    const isBunPackage = pkg.includes("/.bun/") || pkg.includes("/bun/install/cache/");
+    const shouldCreateLink = isPnpmPackage || isBunPackage
+      ? true // Always create links for pnpm and bun packages to ensure compatibility
+      : (pkg.match(/node_modules/g) ?? []).length <= 1;
+    
+    if (shouldCreateLink && !created.has(name)) {
       created.add(name);
       await link(
         target,

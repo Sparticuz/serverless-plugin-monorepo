@@ -5,14 +5,14 @@
 [![NPM Package](https://img.shields.io/npm/v/serverless-plugin-monorepo.svg)](https://www.npmjs.com/package/serverless-plugin-monorepo)
 
 A Serverless plugin design to make it possible to use Serverless in a
-Javascript mono repo with hoisted dependencies, e.g. when using [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/).
+Javascript mono repo with hoisted dependencies, e.g. when using [Yarn Workspaces](https://yarnpkg.com/lang/en/docs/workspaces/), [pnpm workspaces](https://pnpm.io/workspaces), [bun workspaces](https://bun.sh/docs/install/workspaces), or npm workspaces.
 
 This plugin alleviates the need to use [nohoist](https://yarnpkg.com/blog/2018/02/15/nohoist/) functionality by creating
 symlinks to all declared dependencies. Development dependencies are deliberately NOT linked so these
 will not be packaged into the resulting archive.
 
 [Butterwire](https://www.butterwire.com) uses Yarn workspaces and we created this plugin to improve our development
-experience. Not using nohoist saves wasting disk space and also accidentally including
+experience. The plugin also works with pnpm workspaces, bun workspaces, and npm workspaces by automatically adapting to the package manager's structure. Not using nohoist saves wasting disk space and also accidentally including
 development dependencies in our packaged functions.
 
 *Note, this package will only work on operating systems that support symbolic links!*
@@ -24,6 +24,10 @@ development dependencies in our packaged functions.
 yarn add --dev serverless-plugin-monorepo
 # or using NPM
 npm install --dev serverless-plugin-monorepo
+# or using pnpm
+pnpm add --dev serverless-plugin-monorepo
+# or using bun
+bun add --dev serverless-plugin-monorepo
 ```
 
 Currently this plugin requires Node V10+. If there is interest in support older
