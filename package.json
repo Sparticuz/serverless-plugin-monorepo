@@ -2,7 +2,7 @@
   "name": "@sparticuz/serverless-plugin-monorepo",
   "version": "1.0.0",
   "repository": "github:sparticuz/serverless-plugin-monorepo",
-  "description": "OSS Serverless plugin to allow use inside a JS monorepo",
+  "description": "OSS Serverless plugin to allow use inside a JS monorepo with npm, yarn, pnpm, or bun workspaces",
   "keywords": [
     "serverless",
     "osls",
@@ -11,7 +11,8 @@
     "workspaces",
     "pnpm",
     "yarn",
-    "npm"
+    "npm",
+    "bun"
   ],
   "author": "Kyle McNally",
   "homepage": "https://github.com/sparticuz/serverless-plugin-monorepo",

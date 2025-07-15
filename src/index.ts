@@ -101,10 +101,11 @@ export default class ServerlessMonoRepo {
       path.dirname(pkg),
     );
     
-    // For pnpm, we need to handle the .pnpm structure specially
+    // Handle different package manager structures
     const isPnpmPackage = pkg.includes("/.pnpm/");
-    const shouldCreateLink = isPnpmPackage 
-      ? true // Always create links for pnpm packages to ensure compatibility
+    const isBunPackage = pkg.includes("/.bun/") || pkg.includes("/bun/install/cache/");
+    const shouldCreateLink = isPnpmPackage || isBunPackage
+      ? true // Always create links for pnpm and bun packages to ensure compatibility
       : (pkg.match(/node_modules/g) ?? []).length <= 1;
     
     if (shouldCreateLink && !created.has(name)) {
